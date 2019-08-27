@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  discovery-service-app-container:
+    image: discovery-service-app:1
+    build:
+      context: discovery-service
+      dockerfile: Dockerfile
+    volumes:
+    - /data/discovery-service-app
+    ports:
+    - "8761:8761"
+
+  school-service-app-container:
+      image: school-service-app:1
+      build:
+        context: school-service
+        dockerfile: Dockerfile
+      volumes:
+      - /data/school-service-app
+      ports:
+      - "9098:9098"
+
+  student-service-app-container:
+        image: student-service-app:1
+        build:
+          context: student-service
+          dockerfile: Dockerfile
+        volumes:
+        - /data/student-service-app
+        ports:
+        - "8098:8098"
